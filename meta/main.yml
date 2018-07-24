@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Teknique Devops Team
+  description: Ansible role that deploys a proxy docker container for accessing AWS ElasticSearch service
+  company: Teknique Ltd
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+  galaxy_tags:
+    - docker
+    - compose
+    - install
+    - cadvisor
+dependencies: []

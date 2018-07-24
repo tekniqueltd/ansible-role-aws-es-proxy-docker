@@ -1,0 +1,11 @@
+---
+aws_es_proxy_docker_image_name: abutaha/aws-es-proxy
+aws_es_proxy_docker_version: latest
+aws_es_proxy_docker_pull_images: yes
+aws_es_proxy_docker_user: aws-es-proxy
+aws_es_proxy_docker_log_sensitive: yes
+aws_es_proxy_docker_directory: /srv/aws-es-proxy
+aws_es_proxy_docker_expose_port: 9200
+aws_es_proxy_docker_cluster_endpoint: "dummy-host.eu-west-1.es.amazonaws.com"
+aws_es_proxy_docker_access_key: ""
+aws_es_proxy_docker_access_secret: ""

@@ -1,0 +1,48 @@
+---
+- name: Create aws-es-proxy docker user
+  user:
+    name: "{{ aws_es_proxy_docker_user }}"
+    home: "{{ aws_es_proxy_docker_directory }}"
+    createhome: yes
+    groups: docker
+    append: yes
+    shell: /bin/bash
+  become: yes
+  tags:
+    - aws_es_proxy_docker
+
+- name: Pull aws-es-proxy docker image
+  docker_image:
+    name: "{{ aws_es_proxy_docker_image_name }}:{{ aws_es_proxy_docker_version }}"
+    force: "{{ aws_es_proxy_docker_pull_images|bool }}"
+  become: yes
+  become_user: "{{ aws_es_proxy_docker_user }}"
+  tags:
+    - aws_es_proxy_docker
+    - aws_es_proxy_docker_testing
+
+- name: Template docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ aws_es_proxy_docker_directory }}/docker-compose.yml"
+    mode: 0750
+  become: yes
+  become_user: "{{ aws_es_proxy_docker_user }}"
+  no_log: "{{ not aws_es_proxy_docker_log_sensitive }}"
+  tags:
+    - aws_es_proxy_docker
+    - aws_es_proxy_docker_deploy
+    - aws_es_proxy_docker_testing
+
+- name: Start aws-es-proxy docker
+  docker_service:
+    project_src: "{{ aws_es_proxy_docker_directory }}"
+    state: present
+  become: yes
+  become_user: "{{ aws_es_proxy_docker_user }}"
+  register: start_cadvisor_docker
+  tags:
+    - aws_es_proxy_docker
+    - aws_es_proxy_docker_deploy
+    - aws_es_proxy_docker_testing
+

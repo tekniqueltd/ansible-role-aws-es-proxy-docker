@@ -1,0 +1,13 @@
+---
+- name: Test aws-es-proxy docker role
+  hosts: localhost
+  connection: local
+  vars:
+    aws_es_proxy_docker_directory: ./output
+    aws_es_proxy_docker_user: "{{ ansible_user_id }}"
+    aws_es_proxy_docker_cluster_endpoint: "dummy-host.eu-west-1.es.amazonaws.com"
+    aws_es_proxy_docker_access_key: "AKID1234567890"
+    aws_es_proxy_docker_access_secret: "MY-SECRET-KEY"
+
+  roles:
+    - aws-es-proxy-docker
