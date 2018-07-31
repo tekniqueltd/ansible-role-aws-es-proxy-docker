@@ -45,4 +45,3 @@
     - aws_es_proxy_docker
     - aws_es_proxy_docker_deploy
     - aws_es_proxy_docker_testing
-
