@@ -1,4 +1,5 @@
 ---
+aws_es_proxy_docker_start: yes
 aws_es_proxy_docker_image_name: abutaha/aws-es-proxy
 aws_es_proxy_docker_version: latest
 aws_es_proxy_docker_pull_images: yes
