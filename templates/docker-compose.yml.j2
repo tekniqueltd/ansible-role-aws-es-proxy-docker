@@ -19,4 +19,4 @@ services:
       - {{ aws_es_proxy_docker_expose_port }}:9200
 {% endif %}
     restart: always
-    command: ["./aws-es-proxy", "-endpoint", "https://{{ aws_es_proxy_docker_cluster_endpoint }}", "-listen", ":9200"]
+    command: ["-endpoint", "https://{{ aws_es_proxy_docker_cluster_endpoint }}", "-listen", ":9200"]
