@@ -35,7 +35,7 @@
     - aws_es_proxy_docker_testing
 
 - name: Start aws-es-proxy docker
-  docker_service:
+  docker_compose:
     project_src: "{{ aws_es_proxy_docker_directory }}"
     state: present
   become: yes
